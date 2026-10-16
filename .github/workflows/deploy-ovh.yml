@@ -23,7 +23,7 @@ jobs:
       #   FTP_USERNAME identifiant FTP OVH
       #   FTP_PASSWORD mot de passe FTP OVH
       # Variables optionnelles :
-      #   FTP_PROTOCOL   ftps (défaut) ou ftp
+      #   FTP_PROTOCOL   ftp (défaut ; OVH Perso ne gère pas le FTPS)
       #   FTP_SERVER_DIR dossier distant, défaut ./www/
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -31,7 +31,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftp' }}
           port: 21
           server-dir: ${{ vars.FTP_SERVER_DIR || './www/' }}
           exclude: |
