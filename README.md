@@ -41,7 +41,7 @@ On peut aussi relancer un déploiement à la main depuis l'onglet **Actions → 
 
 ### Fonctionnement
 
-- L'envoi se fait par **FTP** dans le dossier `www/` de l'hébergement. L'offre Perso ne propose ni FTPS ni SFTP.
+- L'envoi se fait par **FTP** dans le dossier `www/` de l'hébergement.
 - Seuls les fichiers modifiés depuis le dernier déploiement sont envoyés. L'état est conservé sur le serveur dans `www/.ftp-deploy-sync-state.json` : **ne pas supprimer ce fichier**, sinon le déploiement suivant renverra tout le site.
 - Un fichier supprimé du dépôt est aussi supprimé du serveur.
 - Ne sont pas envoyés : `.git*`, `.github/`, `.DS_Store`, `README*`.
