@@ -1,0 +1,378 @@
+      
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="description" content ="Toutes les infos sur la zombie walk de Paris"/>
+<meta name="author" content="paris zombie" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+<meta property="og:title" content="Paris Zombie Walk"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.pariszombie.com"/>
+<meta property="og:image" content="https://www.pariszombie.com/zombie-wall.jpg"/>
+
+<!-- defines the width of the page as no wider than the width of the viewport -->
+
+<link href="styles.css" rel="stylesheet" />		
+<link href='https://fonts.googleapis.com/css?family=Caudex' rel='stylesheet'/>
+<link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet'/>
+<link href='https://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet'/>
+
+<link href='small-device1024.css' media='only screen and (max-width: 1024px), only screen and (max-device-width: 1024px)' rel='stylesheet'/>
+<link href='small-device640.css' media='only screen and (max-width: 640px), only screen and (max-device-width:640px)' rel='stylesheet'/>
+
+<!--[if lt IE 9]>  
+<script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>  
+<script src="https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+<!--[if lt IE 9]><link href='ie.css' rel='stylesheet'/><![endif]-->
+
+
+<link rel="icon" href="favicon.png" />
+<title>Paris Zombie Walk</title>
+
+</head> 
+
+
+    <body onload="initialize()">
+<!--HEADER-->
+    <div class="wrapper fixed">
+    <header>
+    <div id="logo">
+    <h1><span class="fractur"><a class="scroll" href="#scrolltop">Zombie Walk Paris</a></span></h1></div><!--logo-->
+    <nav>
+    <ul>
+    <li><a class="scroll" href="#datescroll">date et heure</a></li>
+    <li><a class="scroll" href="#mapscroll">Lieu</a></li>
+    <li><a class="scroll" href="#programscroll">programme</a></li>
+    <li><a class="scroll" href="#orderscroll">autres informations</a></li>
+    </ul>
+    </nav>  	
+    </header>
+    </div><!--wrapper-->
+    	
+<!--BLOCK1--> 	
+   <div class="wrapper" id="scrolltop">
+   <div class="info">
+   <div class="circles">
+   <div class="circle-wrap first">
+   <div class="trans">
+   <div class="circle circle1">
+    Quand ?
+   </div><!--circle1-->
+   <div class="details details1">
+   <a class="scroll a1" href="#datescroll">La date et l'heure</a>
+   </div><!--details-->
+   </div><!--trans-->	
+   </div><!--circle-wrap first-->
+   
+   
+   <div class="circle-wrap second">
+   <div class="trans">
+   <div class="circle circle2">
+    Où ?
+   </div><!--circle2-->
+   <div class="details details2">
+   <a class="scroll a2" href="#mapscroll">La carte</a>
+   </div><!--details-->
+   </div><!--trans-->	
+   </div><!--circle-wrap second-->
+   
+   <div class="circle-wrap third">
+   <div class="trans">
+   <div class="circle circle3">
+    Quoi ?
+   </div><!--circle3-->
+   <div class="details details3">
+   <a class="scroll a3" href="#programscroll">Le schmilblick</a>
+   </div><!--details-->
+   </div><!--trans-->	
+   </div><!--circle-wrap third-->
+   
+   <div class="circle-wrap fourth">
+   <div class="trans">
+   <div class="circle circle4">
+    Comment ? 
+   </div><!--circle4-->
+   <div class="details details4">
+   <a class="scroll a4" href="#orderscroll">Autres infos</a>
+   </div><!--details-->
+   </div><!--trans-->	
+   </div><!--circle-wrap fourth-->
+    
+    </div><!--circles-->
+    </div><!--info-->
+    
+    <div class="left">
+  
+    <hgroup>
+    <h1><span class="colour">Zombie</span> Walk</h1>
+    <h2>Paris</h2> 
+    <h3><span class="colour">2026</span></h3>
+    </hgroup>
+    </div><!--left-->
+    
+    <div class="right">
+    <img src="images/main.jpg" alt=""/>
+    </div><!--right-->
+    </div><!--wrapper-->
+
+      
+<!--BLOCK2-->   
+    <div class="wrapper border tsr">
+    <div class="bg">
+    <div id="datescroll"></div>
+    <div id="date" class="strip">
+    <article>
+    <h1>La date et l'heure de la Zombie Walk</h1>
+    <p>La Zombie Walk est organisée chaque année vers octobre/novembre, cette année le rendez-vous est donné le</p>	
+    <p>Samedi 7 Novembre 2026, à 13H00</p>
+    </article>
+    </div><!--date--> 
+    <div id="mapscroll"></div> 
+    </div><!--bg-->	
+    </div><!--wrapper-->
+    
+
+
+<!--BLOCK3-->     
+    <div class="wrapper">
+    <div id="map_canvas"></div><!--map-->
+    <div id="panel-wrap">
+    <div id="panel">
+	<div id="panel-content">
+	<div class="left-content">
+	<h2>L'adresse</h2>
+    <p>
+    <span class="street-address">place de la Bastille</span><br/>
+    <!--<span class="region">Fakenham </span>-->
+    <span class="postal-code">75011</span><br/>
+    <span class="country-name">France</span><br/>
+    <!--<span class="telephone">Tel: +44 1328 863699 </span>-->
+	</p>
+	</div><!--left-content-->
+	<div class="right-content">
+	<h2>Comment s'y rendre ?</h2>
+    <ul>
+     	<li>
+        <a class="tooltip" href="#">     	
+        <div class="small-circle">
+     	<img src="images/bus2.png" alt=""/>
+     	</div><!--circle--> <span>20, 29, 65, 69, 76, 86, 87, 91</span></a>
+     	</li>
+     	
+     	<li>
+        <a class="tooltip" href="#"> 
+     	<div class="small-circle">
+     	<img src="images/metro2.png" alt=""/>
+     	</div><!--circle-->
+        <span>1, 5, 8</span></a>
+     	</li>
+  <!--   	
+     	<li>
+        <a class="tooltip" href="#"> 
+     	<div class="small-circle">
+     	<img src="images/tram2.png" alt=""/>
+     	</div>
+     	<span>8, 2, 11</span></a>
+     	</li>
+
+     	<li>
+        <a class="tooltip" href="#"> 
+     	<div class="small-circle">
+     	<img src="images/train2.png" alt=""/>
+     	</div>
+     	<span>Centraal</span></a>
+     	</li>
+-->
+
+     </ul><!--transport-->
+	</div><!--right-content-->
+	</div><!--panel-content ends here-->
+    </div><!--panel ends here-->
+    <div class="slide">
+    <a href="#" class="btn-slide"><img src="images/i-button.png" alt=""/></a>
+	</div><!--slide ends here-->
+	</div><!--panel-wrap-->
+    </div><!--wrapper-->
+
+
+<!--BLOCK4-->     
+    <div class="wrapper border2">
+    <div class="bg">
+    <div id="programscroll"></div>
+    <div id="program" class="strip">
+    <h1>Au programme</h1>
+    <ul>
+    	
+    <li>
+    <h2>Préparation place de la Bastille</h2>
+    <div class="schedule">
+    <div class="sch-left">
+    <p>14:45&mdash;15:00</p>
+    </div><!--sch-left-->
+    
+    <div class="sch-right">
+    <p>Rassemblement autour de la place de la Bastille<br/>Tous les zombies se rassemblent sur la place<!--<span class="colour">DJ set</span>--></p>
+    </div><!--sch-right-->
+    </div><!--schedule-->
+    
+    <div class="schedule">
+    <div class="sch-left">
+    <p>13:00&mdash;15h00</p>
+    </div><!--sch-left-->
+    
+    <div class="sch-right">
+    <p></p>
+    <p></p>
+    </div><!--sch-right-->
+
+    </div><!--schedule-->
+    
+
+    
+    
+    <li>
+    <h2>La Zombie Walk</h2>
+
+
+    <div class="schedule">
+    <div class="sch-left">
+    <p>15:00&mdash;le temps de marcher</p>
+    </div><!--sch-left-->
+    
+    <div class="sch-right">
+    <p>Nous marcherons tranquillement jusque la <span class="colour">place de la Nation</span></p>
+    </div><!--sch-right-->
+    </div><!--schedule-->
+ 
+
+ 	<!--
+    <div class="schedule">
+    <div class="sch-left">
+    <p>15:00&mdash;le temps de marcher</p>
+    </div>
+
+    
+    <div class="sch-right">
+    <p>Tout le long de la journée, vos oreilles seront en effervescence avec le <span class="colour">DJ</span> set concocté par <a href="https://www.facebook.com/lucyinblu" target="_blank">Lucy in Blu</a></p>
+    </div>
+    </div>
+    -->
+
+    </div><!--schedule-->
+    
+    </li>
+    </ul>
+   
+    
+    </div><!--program-->  
+    </div><!--bg-->	
+    </div><!--wrapper-->
+    
+    
+<!--BLOCK5-->     
+    <div class="wrapper border3">
+    <div class="bg2">
+    <div id="orderscroll"></div>
+    <div id="order" class="strip">
+    <h1>Infos</h1>
+    <div id="left-contact">
+    <article>
+    <h2>Armes et maquillage</h2>
+    <p>Cette année, la Zombie Walk Paris n'aura pas de stand de maquillage pour vous zombifier ! Ce sera à vous d'être créatifs et de sortir les pinceaux pour vous faire plus morts que jamais ! 
+Un maquillage réussi n'est pas forcément compliqué et onéreux à faire, vous pouvez voir différents conseils et tutos sur You Tube et sur le groupe FB <a href="https://www.facebook.com/groups/463702863650721/" target="_blank">Maquillage Zombie Walk Paris</a></p>
+<br>
+    <p>
+Comme chaque année, nous vous rappelons que le port de toute arme et/ou réplique d'apparence réaliste est strictement interdit et puni par la loi. 
+
+Comme l'an passé, les participants récalcitrants à cette règle de survie pour tous se verront repeindre leur arme en rose, et ce par ordre nécro-préfectoral. Il n'y aura aucune exception !
+</p>
+    </article>
+    </div><!--left-contact-->
+    
+    <div id="right-contact">
+    <article>
+    <h2>Autres infos</h2>
+    <p>L'organisation de la Zombie Walk demande du temps, mais aussi un peu de budget pour la location du matériel, si vous souhaitez nous aider, n'hésitez pas à nous <a href="https://www.lepotcommun.fr/pot/14ilupdm" target="_blank">faire un ptit don</a>, l'association La Mad est à but non lucratif et tout le budget réuni sera dépensé pour la zombie walk, si jamais par miracle nous dépassons par vos dons les dépenses courantes, nous avons beaucoup d'idées qui pourraient être sympa à faire pour la zwp (comme éditer des tshirts par exemple)</p>
+    
+    <p class="connect">
+    <span class="colour">Notre email:</span> <a href="team@pariszombie.com">team@pariszombie.com</a><br/>
+    <!--<span class="colour">Le dossier de presse:</span>  <a href="/Dossier de Presse ZWP2015.pdf" target="_blank">Dossier de Presse ZWP2015</a><br/>-->
+    
+    </p>
+    <br>
+    
+    <div class="social">
+    <a href="https://www.lepotcommun.fr/pot/14ilupdm" target="_blank">Faire un ptit don</a>
+    <a href="https://www.facebook.com/Zombie-Walk-Paris-402860923102318" target="_blank">Le groupe facebook</a>
+    </div><!--social-->
+    </article>
+    </div><!--right-contact-->  
+
+    </div><!--bg2-->	
+    </div><!--wrapper-->
+
+
+<!--BLOCK8-->    
+    <div class="wrapper border5">
+    <div class="bg2">
+    <footer><small><div class="fb-like"></div></small> 
+    <a class="scroll totop" href="#scrolltop">Top</a>
+    </footer>
+    </div><!--bg2-->	
+    </div><!--wrapper-->
+
+
+
+<!--SCRIPTS-->
+
+<!--prefix-free by lea verou-->
+<script src="js/prefix-free.js"></script>
+
+<!--jquery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+
+<!--scrollcontent-->
+<script src="js/scroll.js"></script>
+
+<!--panel over map-->
+<script>
+$(document).ready(function(){
+$(".btn-slide").click(function(){
+$("#panel").slideToggle("slow");
+$(this).toggleClass("active"); return false;
+});
+});
+</script>
+
+<!--map-->
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyBdNJAX3OvBZFcLE5aUEvQ7Z6uMfqJsRVM&sensor=false"></script>
+<script src="js/googlemap.js"></script>
+
+<!--youtube player-->
+<script src="js/video.js"></script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-332769-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    </body>
+</html>
