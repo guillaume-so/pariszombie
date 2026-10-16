@@ -19,12 +19,7 @@ parcour*.jpg           plans des parcours
 .htaccess              redirection HTTP → HTTPS (Apache OVH)
 ```
 
-Pour travailler en local, il suffit d'ouvrir `index.html` dans un navigateur, ou de lancer un petit serveur depuis la racine du dépôt :
-
-```sh
-python3 -m http.server 8000
-# puis http://localhost:8000
-```
+Pour travailler en local, il suffit d'ouvrir `index.html` dans un navigateur.
 
 ## Déploiement
 
