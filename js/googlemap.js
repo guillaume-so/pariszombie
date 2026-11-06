@@ -17,48 +17,60 @@ featureType: 'road.highway',
     }
   ];
   var map;
-  var city = new google.maps.LatLng(48.8313, 2.3557);
-  
-  
+  // Départ : place d'Italie — Arrivée : place Denfert-Rochereau
+  var depart = new google.maps.LatLng(48.8313, 2.3557);
+  var arrivee = new google.maps.LatLng(48.8339, 2.3324);
+  var markers = [];
+
   function initialize() {
   var greyMapType = new google.maps.StyledMapType(greyStyles,
   {name: "Grey Area"});
   var mapOptions = {
-  zoom: 17,
-  center: city,
+  zoom: 15,
+  center: depart,
       scrollwheel: false,
       navigationControl: false,
       mapTypeControl: true,
       scaleControl: true,
       draggable: true,
-    };
       mapTypeControlOptions: {
       mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'grey_area']
-    
-  };
-  var map = new google.maps.Map(document.getElementById('map_canvas'),
+      }
+    };
+  map = new google.maps.Map(document.getElementById('map_canvas'),
     mapOptions);
 
   //Associate the styled map with the MapTypeId and set it to display.
   map.mapTypes.set('grey_area', greyMapType);
   map.setMapTypeId('grey_area');
 
-               
-    marker = new google.maps.Marker({
-      map:map,
- 	  scrollwheel: true,
-      navigationControl: true,
-      mapTypeControl: true,
-      scaleControl: true,
-      draggable: true,
-      animation: google.maps.Animation.DROP,
-      position: city
-    });
-    google.maps.event.addListener(marker, 'click', toggleBounce);
+  addMarker(depart, 'D', "Départ : place d'Italie");
+  addMarker(arrivee, 'A', 'Arrivée : place Denfert-Rochereau');
+
+  // Affiche le départ et l'arrivée dans la carte
+  var bounds = new google.maps.LatLngBounds();
+  bounds.extend(depart);
+  bounds.extend(arrivee);
+  map.fitBounds(bounds, 70);
   }
 
-  function toggleBounce() {
+  function addMarker(position, label, title) {
+    var marker = new google.maps.Marker({
+      map: map,
+      position: position,
+      label: label,
+      title: title,
+      animation: google.maps.Animation.DROP
+    });
+    var infowindow = new google.maps.InfoWindow({content: title});
+    google.maps.event.addListener(marker, 'click', function() {
+      toggleBounce(marker);
+      infowindow.open(map, marker);
+    });
+    markers.push(marker);
+  }
 
+  function toggleBounce(marker) {
     if (marker.getAnimation() != null) {
       marker.setAnimation(null);
     } else {
