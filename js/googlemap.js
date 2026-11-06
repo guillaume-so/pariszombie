@@ -17,7 +17,7 @@ featureType: 'road.highway',
     }
   ];
   var map;
-  var city = new google.maps.LatLng(48.8530, 2.3690);
+  var city = new google.maps.LatLng(48.8313, 2.3557);
   
   
   function initialize() {
