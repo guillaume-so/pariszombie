@@ -17,8 +17,9 @@ featureType: 'road.highway',
     }
   ];
   var map;
-  // Départ : place d'Italie — Arrivée : place Denfert-Rochereau
-  var depart = new google.maps.LatLng(48.8313, 2.3557);
+  // Départ : place d'Italie, devant le Mémorial aux enfants du 13e morts
+  // (angle du 1 bd Auguste-Blanqui) — Arrivée : place Denfert-Rochereau
+  var depart = new google.maps.LatLng(48.8307, 2.3544);
   var arrivee = new google.maps.LatLng(48.8339, 2.3324);
   var markers = [];
 
@@ -44,7 +45,7 @@ featureType: 'road.highway',
   map.mapTypes.set('grey_area', greyMapType);
   map.setMapTypeId('grey_area');
 
-  addMarker(depart, 'D', "Départ : place d'Italie");
+  addMarker(depart, 'D', "Départ à 15h00 : place d'Italie, devant le Mémorial aux enfants du 13e morts (angle du 1 bd Auguste-Blanqui)");
   addMarker(arrivee, 'A', 'Arrivée : place Denfert-Rochereau');
 
   // Affiche le départ et l'arrivée dans la carte
@@ -59,8 +60,7 @@ featureType: 'road.highway',
 
   // Tracé du cortège : bd Auguste-Blanqui puis bd Saint-Jacques
   var parcours = [
-    [48.8313, 2.3557], // place d'Italie
-    [48.8307, 2.3542],
+    [48.8307, 2.3544], // place d'Italie, Mémorial (1 bd Auguste-Blanqui)
     [48.8299, 2.3506], // Corvisart
     [48.8304, 2.3468],
     [48.8311, 2.3433], // Glacière
