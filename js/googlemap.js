@@ -24,6 +24,7 @@ featureType: 'road.highway',
   var markers = [];
 
   function initialize() {
+  var mobile = document.getElementById('map_canvas').offsetWidth <= 640;
   var greyMapType = new google.maps.StyledMapType(greyStyles,
   {name: "Grey Area"});
   var mapOptions = {
@@ -31,7 +32,10 @@ featureType: 'road.highway',
   center: depart,
       scrollwheel: false,
       navigationControl: false,
-      mapTypeControl: true,
+      // sur mobile, ces boutons cachent le parcours (le zoom se fait aux doigts)
+      mapTypeControl: !mobile,
+      streetViewControl: !mobile,
+      cameraControl: !mobile,
       scaleControl: true,
       draggable: true,
       mapTypeControlOptions: {
@@ -52,7 +56,9 @@ featureType: 'road.highway',
   var bounds = new google.maps.LatLngBounds();
   bounds.extend(depart);
   bounds.extend(arrivee);
-  map.fitBounds(bounds, 70);
+  // sur mobile, marges réduites pour que le parcours remplisse la carte
+  // (plus en haut, sous le bouton « info »)
+  map.fitBounds(bounds, mobile ? {top: 40, right: 25, bottom: 25, left: 25} : 70);
 
   drawRoute();
   startZombies();
@@ -155,14 +161,44 @@ featureType: 'road.highway',
     window.requestAnimationFrame(step);
   }
 
+  // 🪦 est un emoji récent (2020) : un vieil appareil l'affiche en carré vide.
+  // On le dessine en noir dans un canvas : un emoji en couleur garde ses
+  // propres couleurs (pierre grise), un carré vide ou un glyphe manquant reste noir.
+  function emojiOk(emoji) {
+    try {
+      var c = document.createElement('canvas');
+      c.width = c.height = 48;
+      var ctx = c.getContext('2d');
+      ctx.textBaseline = 'top';
+      ctx.font = '40px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif';
+      ctx.fillStyle = '#000';
+      ctx.fillText(emoji, 0, 0);
+      var px = ctx.getImageData(0, 0, 48, 48).data;
+      for (var i = 0; i < px.length; i += 4) {
+        if (px[i + 3] > 128 && px[i] + px[i + 1] + px[i + 2] > 150) return true;
+      }
+    } catch (e) {}
+    return false;
+  }
+  var tombeOk = emojiOk('🪦');
+
+  // Départ et arrivée : une tombe, un peu plus grosse que les zombies (26px),
+  // ou la pastille Google (D / A) si l'appareil ne connaît pas l'emoji tombe
   function addMarker(position, label, title) {
-    var marker = new google.maps.Marker({
+    var options = {
       map: map,
       position: position,
       label: label,
       title: title,
+      zIndex: 20, // devant les zombies : ils sortent de derrière la tombe
       animation: google.maps.Animation.DROP
-    });
+    };
+    if (tombeOk) {
+      // symbole invisible : il donne une zone cliquable, l'emoji est dans le label
+      options.icon = {path: google.maps.SymbolPath.CIRCLE, scale: 20, fillOpacity: 0, strokeOpacity: 0};
+      options.label = {text: '🪦', fontSize: '40px'};
+    }
+    var marker = new google.maps.Marker(options);
     var infowindow = new google.maps.InfoWindow({content: title});
     google.maps.event.addListener(marker, 'click', function() {
       toggleBounce(marker);

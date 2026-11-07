@@ -1,4 +1,9 @@
 RewriteEngine On
+
+# www.pariszombie.com → pariszombie.com (la clé Google Maps n'accepte que pariszombie.com)
+RewriteCond %{HTTP_HOST} ^www\.pariszombie\.com$ [NC]
+RewriteRule (.*) https://pariszombie.com%{REQUEST_URI} [L,R=301]
+
+# HTTP → HTTPS
 RewriteCond %{ENV:HTTPS} !on
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
