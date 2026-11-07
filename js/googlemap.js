@@ -45,7 +45,7 @@ featureType: 'road.highway',
   map.mapTypes.set('grey_area', greyMapType);
   map.setMapTypeId('grey_area');
 
-  addMarker(depart, 'D', "Départ à 15h00 : place d'Italie, devant le Mémorial aux enfants du 13e morts (angle du 1 bd Auguste-Blanqui)");
+  addMarker(depart, 'D', "Rassemblement dès 13h00, départ à 15h00 : place d'Italie, devant le Mémorial aux enfants du 13e morts (angle du 1 bd Auguste-Blanqui)");
   addMarker(arrivee, 'A', 'Arrivée : place Denfert-Rochereau');
 
   // Affiche le départ et l'arrivée dans la carte
