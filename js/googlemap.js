@@ -24,6 +24,7 @@ featureType: 'road.highway',
   var markers = [];
 
   function initialize() {
+  var mobile = document.getElementById('map_canvas').offsetWidth <= 640;
   var greyMapType = new google.maps.StyledMapType(greyStyles,
   {name: "Grey Area"});
   var mapOptions = {
@@ -31,7 +32,10 @@ featureType: 'road.highway',
   center: depart,
       scrollwheel: false,
       navigationControl: false,
-      mapTypeControl: true,
+      // sur mobile, ces boutons cachent le parcours (le zoom se fait aux doigts)
+      mapTypeControl: !mobile,
+      streetViewControl: !mobile,
+      cameraControl: !mobile,
       scaleControl: true,
       draggable: true,
       mapTypeControlOptions: {
@@ -52,7 +56,9 @@ featureType: 'road.highway',
   var bounds = new google.maps.LatLngBounds();
   bounds.extend(depart);
   bounds.extend(arrivee);
-  map.fitBounds(bounds, 70);
+  // sur mobile, marges réduites pour que le parcours remplisse la carte
+  // (plus en haut, sous le bouton « info »)
+  map.fitBounds(bounds, mobile ? {top: 40, right: 25, bottom: 25, left: 25} : 70);
 
   drawRoute();
   startZombies();
@@ -155,12 +161,16 @@ featureType: 'road.highway',
     window.requestAnimationFrame(step);
   }
 
+  // Départ et arrivée : une tombe, un peu plus grosse que les zombies (26px)
   function addMarker(position, label, title) {
     var marker = new google.maps.Marker({
       map: map,
       position: position,
-      label: label,
+      // symbole invisible : il donne une zone cliquable, l'emoji est dans le label
+      icon: {path: google.maps.SymbolPath.CIRCLE, scale: 20, fillOpacity: 0, strokeOpacity: 0},
+      label: {text: '🪦', fontSize: '40px'},
       title: title,
+      zIndex: 20, // devant les zombies : ils sortent de derrière la tombe
       animation: google.maps.Animation.DROP
     });
     var infowindow = new google.maps.InfoWindow({content: title});
